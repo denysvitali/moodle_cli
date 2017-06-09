@@ -274,8 +274,6 @@ class MoodleCourseDownloader:
 			relayState = re.search('name="RelayState" value="(.*?)"', r.text)
 			action = re.search('form action="(.*?)"', r.text)
 
-			print(r.text)
-
 			samlResp = html.unescape(samlResp.group(1))
 			relayState = html.unescape(relayState.group(1))
 			action = html.unescape(action.group(1))
