@@ -264,6 +264,8 @@ class MoodleCourseDownloader:
 
 			r = self._session.post(r.url, fdata)
 
+			r = self._session.post(r.url, login_data)
+
 			#print(r.url) # login2.supsi.ch ...
 
 			#r = self._session.get(r.url) # SAML request
@@ -271,6 +273,8 @@ class MoodleCourseDownloader:
 			samlResp = re.search('name="SAMLResponse" value="(.*?)"', r.text)
 			relayState = re.search('name="RelayState" value="(.*?)"', r.text)
 			action = re.search('form action="(.*?)"', r.text)
+
+			print(r.text)
 
 			samlResp = html.unescape(samlResp.group(1))
 			relayState = html.unescape(relayState.group(1))
